@@ -5,7 +5,7 @@ var ClozeCard = function(text, cloze) {
     console.log("Error: " + cloze + " does not exist in text");
     return;
   }
-  this.partial = text.replace(cloze, "");
+  this.partial = text.replace(cloze, "...");
   this.fullText = text;
 }
 

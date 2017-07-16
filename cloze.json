@@ -1,5 +1,22 @@
-([
+ [
   {
-    
+    "text": "George Washington was the first president of the United States.",
+    "cloze": "George Washington"
+  },
+  {
+    "text": "There are 50 states in the United States.",
+    "cloze": "50"
+  },
+  {
+    "text": "Sacramento is the capital of California.",
+    "cloze": "Sacramento"
+  },
+  {
+    "text": "Hawaii is the 50th state of the United States.",
+    "cloze": "Hawaii"
+  },
+  {
+    "text": "The United States declared its indepence on July 4, 1776.",
+    "cloze": "1776"
   }
-])
+]
