@@ -30,12 +30,12 @@ chooseMode();
 
 // Fills array with BasicCards
 basicList.forEach(function(q) {
-  basicArray.push(new BasicCard(q.front, q.back));
+  basicArray.push(BasicCard(q.front, q.back));
 });
 
 // Fills array with ClozeCards
 clozeList.forEach(function(q) {
-  clozeArray.push(new ClozeCard(q.text, q.cloze));
+  clozeArray.push(ClozeCard(q.text, q.cloze));
 });
 
 var count = 0;
@@ -48,7 +48,13 @@ function basicQuestions() {
       {
         type: "input",
         name: "answer",
-        message: basicArray[count].front
+        message: basicArray[count].front,
+        validate: function (input) {
+          if (!input) {
+            return false;
+          }
+          return true;
+        }
       }
     ]).then(function (answers) {
       if (answers.answer.toLowerCase() === basicArray[count].back.toLowerCase()) {
@@ -74,7 +80,13 @@ function clozeQuestions() {
       {
         type: "input",
         name: "answer",
-        message: clozeArray[count].partial
+        message: clozeArray[count].partial,
+        validate: function (input) {
+          if (!input) {
+            return false;
+          }
+          return true;
+        }
       }
     ]).then(function (answers) {
       if (answers.answer.toLowerCase() === clozeArray[count].cloze.toLowerCase()) {
