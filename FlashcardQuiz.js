@@ -18,25 +18,23 @@ function chooseMode() {
     }
   ]).then(function (answers) {
     if (answers.answer === "Basic") {
+      // Fills array with BasicCards
+      basicList.forEach(function(q) {
+        basicArray.push(BasicCard(q.front, q.back));
+      });
       basicQuestions();
     }
     else if (answers.answer === "Cloze-Deleted") {
+      // Fills array with ClozeCards
+      clozeList.forEach(function(q) {
+        clozeArray.push(ClozeCard(q.text, q.cloze));
+      });
       clozeQuestions();
     }
   });
 }
 
 chooseMode();
-
-// Fills array with BasicCards
-basicList.forEach(function(q) {
-  basicArray.push(BasicCard(q.front, q.back));
-});
-
-// Fills array with ClozeCards
-clozeList.forEach(function(q) {
-  clozeArray.push(ClozeCard(q.text, q.cloze));
-});
 
 var count = 0;
 var score = 0;
@@ -107,13 +105,16 @@ function clozeQuestions() {
 
 // Tell user score and ask if they want to play again
 function endGame() {
-  var str = "Game Over! You got " + score + "/" + count;
-  if (score === 1) {
-    str += " answer correct.";
+  var str = "";
+  if (score === 5) {
+    str = "Congratulations!";
   }
   else {
-    str += " answers correct.";
+    str = "Game Over!";
   }
+  str += " You got " + score + "/" + count + 
+      " answers correct.";
+
   console.log(str);
   inquirer.prompt([
     {
